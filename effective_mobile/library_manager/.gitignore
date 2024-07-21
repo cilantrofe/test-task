@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+venv/
+ENV/
+.venv/
+.env/
+instance/
+.webassets-cache
+eggs/
+.eggs/
+*.egg-info/
+dist/
+build/
