@@ -2,12 +2,10 @@
 # unittest - для тестирования
 # os - для работы с файлами
 # json - для работы с данными в формате json
-# pathlib - для поиска пути к файлу относительно корневой директории
 
 import unittest
 import os
 import json
-from pathlib import Path
 
 # Импортируем модуль библиотеки
 from src.library import Library
