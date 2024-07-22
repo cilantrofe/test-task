@@ -16,14 +16,14 @@ void Server::run()
 
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
     {
-        std::cerr << "Socket failed" << std::endl;
+        std::cerr << "Socket failed" << '\n';
         exit(EXIT_FAILURE);
     }
 
     // Устанавливаем опции сокета
     if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)))
     {
-        std::cerr << "setsockopt" << std::endl;
+        std::cerr << "setsockopt" << '\n';
         close(server_fd);
         exit(EXIT_FAILURE);
     }
@@ -35,7 +35,7 @@ void Server::run()
 
     if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0)
     {
-        std::cerr << "Bind failed" << std::endl;
+        std::cerr << "Bind failed" << '\n';
         close(server_fd);
         exit(EXIT_FAILURE);
     }
@@ -43,18 +43,18 @@ void Server::run()
     // Устанавливаем режим прослушивания
     if (listen(server_fd, 3) < 0)
     {
-        std::cerr << "Listen" << std::endl;
+        std::cerr << "Listen" << '\n';
         close(server_fd);
         exit(EXIT_FAILURE);
     }
 
     while (true)
     {
-        std::cout << "Waiting for connection..." << std::endl;
+        std::cout << "Waiting for connection..." << '\n';
 
         if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t *)&addrlen)) < 0)
         {
-            std::cerr << "Accept" << std::endl;
+            std::cerr << "Accept" << '\n';
             continue;
         }
 
@@ -77,10 +77,10 @@ void Server::processConnection(int socket)
     // Проверяем корректность данных
     if (buffer > 2 && buffer % 32 == 0)
     {
-        std::cout << "Received valid data: " << buffer << std::endl;
+        std::cout << "Received valid data: " << buffer << '\n';
     }
     else
     {
-        std::cerr << "Error: Invalid data" << std::endl;
+        std::cerr << "Error: Invalid data" << '\n';
     }
 }
